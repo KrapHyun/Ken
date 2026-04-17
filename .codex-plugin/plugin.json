@@ -1,0 +1,40 @@
+{
+  "name": "harness-codex",
+  "version": "1.0.0",
+  "description": "Codex-adapted port of revfactory/harness for designing reusable workflows, role documents, and installable skills.",
+  "author": {
+    "name": "Local workspace port",
+    "url": "https://github.com/revfactory/harness"
+  },
+  "homepage": "https://github.com/revfactory/harness",
+  "repository": "https://github.com/revfactory/harness",
+  "license": "Apache-2.0",
+  "keywords": [
+    "harness",
+    "codex",
+    "workflow-architect",
+    "multi-agent",
+    "skill-architect"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Harness Codex",
+    "shortDescription": "Meta-skill for designing Codex-compatible workflows and project-specific skills.",
+    "longDescription": "Harness Codex ports the core idea of revfactory/harness into the current Codex runtime. It helps analyze a domain, define reusable role documents, draft installable skills, and package the result as a Codex-friendly plugin or local workspace artifact without assuming unsupported runtime APIs.",
+    "developerName": "Local Workspace",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/revfactory/harness",
+    "privacyPolicyURL": "https://github.com/revfactory/harness/blob/main/privacy.html",
+    "termsOfServiceURL": "https://github.com/revfactory/harness/blob/main/LICENSE",
+    "defaultPrompt": [
+      "Build a harness for this project.",
+      "Design a Codex workflow for this domain.",
+      "Audit and extend the existing harness."
+    ],
+    "brandColor": "#2563EB"
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Harness Codex"
+  short_description: "Design Codex workflows, roles, and reusable skills"
+  default_prompt: "Design a Codex-ready harness for this project, including roles, skills, and packaging."
