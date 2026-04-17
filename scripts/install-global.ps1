@@ -43,10 +43,15 @@ function Ensure-MarketplaceEntry {
   }
 
   if (-not $payload.plugins) {
-    $payload | Add-Member -NotePropertyName plugins -NotePropertyValue @()
+    if ($payload.PSObject.Properties.Name -contains "plugins") {
+      $payload.plugins = @()
+    } else {
+      $payload | Add-Member -NotePropertyName plugins -NotePropertyValue @()
+    }
   }
 
-  $existing = @($payload.plugins | Where-Object { $_.name -eq $Name })
+  $plugins = @($payload.plugins)
+  $existing = @($plugins | Where-Object { $_.name -eq $Name })
   $newEntry = [ordered]@{
     name = $Name
     source = [ordered]@{
@@ -61,13 +66,14 @@ function Ensure-MarketplaceEntry {
   }
 
   if ($existing.Count -gt 0) {
-    $payload.plugins = @($payload.plugins | ForEach-Object {
+    $plugins = @($plugins | ForEach-Object {
       if ($_.name -eq $Name) { $newEntry } else { $_ }
     })
   } else {
-    $payload.plugins += $newEntry
+    $plugins = @($plugins + $newEntry)
   }
 
+  $payload.plugins = @($plugins)
   Write-JsonFile -Path $Path -Data $payload
 }
 
