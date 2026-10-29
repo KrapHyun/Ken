@@ -1,0 +1,28 @@
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><style>
+.flow{display:flex;flex-direction:column;gap:10px}
+.step{display:flex;gap:14px;align-items:stretch}
+.num{min-width:46px;height:46px;border-radius:23px;background:#002c5f;color:#fff;font-weight:bold;font-size:18px;display:flex;align-items:center;justify-content:center;align-self:center}
+.down{margin-left:16px;color:#002c5f;font-size:18px;line-height:1}
+.dec{border-style:dashed}
+code{font-family:'WenQuanYi Zen Hei Mono',monospace;background:#fff;border:1px solid #d8dee9;border-radius:4px;padding:0 4px;font-size:13px}
+</style></head><body>
+<div class="title">그림 2. 핵심 알고리즘 파이프라인</div>
+<div class="sub">거치 → 자동 검사 → 수집 → 이벤트 감지 → 비식별화 → 업로드 → 품질 점수 → 리워드</div>
+<div class="flow">
+<div class="step"><div class="num">1</div><div class="box blue" style="flex:1"><div class="h">Mount Check (거치 위치 검사)</div><div class="item">
+IMU 중력벡터로 롤 <code>|φ| &lt; 5°</code>, 피치 범위 확인 → 카메라 내부 파라미터로 <b>예상 지평선 위치</b> 계산(화면 높이 35–55% 이내) ·
+노면 영역 비율 30–60% · 선명도(라플라시안 분산) · 노출 · 전면 카메라 얼굴 검출(정면 ±30°) → 점수 ≥ 80 이면 <span class="tag">OK</span> 연동 시작</div></div></div>
+<div class="down">▼</div>
+<div class="step"><div class="num">2</div><div class="box teal" style="flex:1"><div class="h">동기화 수집</div><div class="item">
+전방 영상(H.264) + IMU 100Hz + GPS + 기압 + 차량 신호(차속·조향·브레이크·크루즈)를 <b>단일 단조 시계</b>로 기록 ·
+폰 IMU 종가속도와 차속 미분값의 <b>상호상관(cross-correlation)</b>으로 시간 오프셋 자동 보정</div></div></div>
+<div class="down">▼</div>
+<div class="step"><div class="num">3</div><div class="box orange dec" style="flex:1"><div class="h">이벤트 감지 · DMS (온디바이스, 링버퍼 사전 10초 + 사후 5초 클립)</div><div class="item">
+<b>차량/IMU 규칙:</b> 종가속도 ≤ −0.35g 급제동 · 3초 내 차속 변화 ≥ 30km/h · 조향 변화 ≥ 50° · 크루즈/ADAS 해제 순간 · 이상치 점수(z-score) 상위<br>
+<b>운전자:</b> EAR 기반 눈 감김, PERCLOS(60초) ≥ 0.15 → 졸음 경고 · 시선 이탈 2초 이상 → 전방 주시 경고(음성/진동)</div></div></div>
+<div class="down">▼</div>
+<div class="step"><div class="num">4</div><div class="box green" style="flex:1"><div class="h">비식별화 → 업로드 → 품질 점수 → 리워드</div><div class="item">
+얼굴·번호판 블러 후 저장(운전자 얼굴은 원본 미저장, 지표만) · 새벽 + Wi-Fi + 충전 조건에서 업로드 ·
+<b>Q = 0.3·화각 + 0.2·선명도 + 0.2·신호정합 + 0.3·희소성</b> · 리워드 = 기본단가 × 유효 주행 km × Q · 영상-차속 불일치 시 부정 수집으로 제외</div></div></div>
+</div>
+</body></html>

@@ -1,0 +1,38 @@
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><style>
+.wrap{display:flex;gap:28px;align-items:flex-start}
+.phone{width:300px;height:560px;border-radius:36px;background:#111;padding:14px;position:relative}
+.scr{width:100%;height:100%;border-radius:26px;overflow:hidden;position:relative;background:linear-gradient(180deg,#9fc3e6 0%,#cfe0ef 44%,#6b6f75 46%,#4b4f55 100%)}
+.hz{position:absolute;left:0;right:0;top:45%;border-top:2px dashed #ffd400}
+.lane{position:absolute;bottom:0;width:6px;height:52%;background:#fff;opacity:.85}
+.chk{position:absolute;left:12px;right:12px;bottom:14px;background:rgba(0,0,0,.72);color:#fff;border-radius:14px;padding:10px 12px;font-size:13px;line-height:1.6}
+.ok{display:inline-block;background:#2e8b57;color:#fff;border-radius:8px;padding:2px 10px;font-weight:bold}
+.pip{position:absolute;right:12px;top:14px;width:84px;height:110px;border-radius:10px;background:#2a2f37;border:2px solid #fff;color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;text-align:center}
+.car{width:620px;height:360px;border-radius:18px;background:#0e1b2c;padding:20px;color:#e9eef6}
+.car .r{display:flex;gap:14px;margin-top:14px}
+.card{flex:1;background:#17283f;border-radius:12px;padding:12px}
+.big{font-size:30px;font-weight:bold;color:#fff}
+.lbl{font-size:13px;color:#9fb0c8}
+.cap2{font-size:13px;color:#5b6474;margin-top:8px;text-align:center}
+</style></head><body>
+<div class="title">그림 4. 화면 시안 (MVP)</div>
+<div class="sub">(좌) 스마트폰 거치 검사 화면 · (우) Pleos Connect 차량 디스플레이</div>
+<div class="wrap">
+<div><div class="phone"><div class="scr">
+<div class="hz"></div><svg style="position:absolute;left:0;top:0" width="272" height="532" viewBox="0 0 272 532"><line x1="20" y1="532" x2="128" y2="242" stroke="#fff" stroke-width="5" opacity=".85"/><line x1="252" y1="532" x2="144" y2="242" stroke="#fff" stroke-width="5" opacity=".85"/><line x1="136" y1="532" x2="136" y2="250" stroke="#fff" stroke-width="3" stroke-dasharray="18 14" opacity=".7"/></svg>
+<div class="pip">전면 카메라<br>얼굴 인식 ✓</div>
+<div class="chk">거치 위치 검사<br>✓ 기울기 롤 1.8° · 피치 4.2°<br>✓ 지평선 위치 45% · 노면 비율 48%<br>✓ 선명도 · 노출 양호<br>점수 92 <span class="ok">OK · 연동 시작</span></div>
+</div></div><div class="cap2">노란 점선: IMU로 계산한 예상 지평선</div></div>
+<div><div class="car">
+<div style="font-size:18px;font-weight:bold">PhonePilot <span class="tag" style="background:#2e8b57">수집 중</span> <span class="tag">폰 연결됨</span></div>
+<div class="r">
+<div class="card"><div class="lbl">오늘 유효 수집</div><div class="big">42.7 km</div><div class="lbl">품질 점수 0.87</div></div>
+<div class="card"><div class="lbl">적립 리워드</div><div class="big">1,280 P</div><div class="lbl">이번 달 구독 할인 12%</div></div>
+<div class="card"><div class="lbl">운전자 주의도</div><div class="big">양호</div><div class="lbl">전방주시 경고 0회</div></div>
+</div>
+<div class="r">
+<div class="card"><div class="lbl">폰 상태</div><div style="font-size:15px;margin-top:4px">발열 보통 → 송풍구 냉방 보조 ON · 화면 꺼짐(시계 모드)</div></div>
+<div class="card"><div class="lbl">이벤트 클립</div><div style="font-size:15px;margin-top:4px">급제동 2 · 끼어들기 1 → 새벽 Wi-Fi 업로드 예정</div></div>
+</div>
+</div><div class="cap2">주행 중 표시는 운전 방해 최소화 가이드(DDO)를 준수하는 요약 정보만 제공</div></div>
+</div>
+</body></html>

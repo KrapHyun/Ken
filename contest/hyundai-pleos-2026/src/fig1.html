@@ -1,0 +1,28 @@
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><style>
+.row{display:flex;gap:18px;align-items:stretch}
+.arrow{display:flex;flex-direction:column;justify-content:center;align-items:center;font-size:13px;color:#002c5f;min-width:120px;text-align:center}
+.arrow .a{font-size:34px;line-height:1}
+</style></head><body>
+<div class="title">그림 1. PhonePilot 시스템 구조</div>
+<div class="sub">스마트폰(센서·엣지 AI) ↔ Pleos Connect 차량 앱(차량 신호·제어·UI) ↔ 클라우드(학습 데이터·리워드)</div>
+<div class="row">
+ <div class="box teal" style="flex:1.1">
+  <div class="h">① 스마트폰 컴패니언 앱 (Android)</div>
+  <div class="item"><b>센서</b><br>· 후면 카메라: 전방 도로 영상 (30fps)<br>· 전면 카메라: 운전자 얼굴 (DMS)<br>· IMU 가속도·자이로·지자기 (100Hz)<br>· GPS(1–10Hz) · 기압계</div>
+  <div class="item" style="margin-top:8px"><b>온디바이스 AI</b><br>· 거치 위치 검사(Mount Check)<br>· 졸음·전방주시 태만 감지<br>· 이상 이벤트 감지 → 클립 저장<br>· 얼굴·번호판 비식별화<br>· 발열 상태 모니터링</div>
+ </div>
+ <div class="arrow"><div class="a">⇄</div>시간 동기화된<br>신호 교환<br><span style="color:#5b6474">(로컬 연결 /<br>타임스탬프 병합)</span></div>
+ <div class="box blue" style="flex:1.1">
+  <div class="h">② Pleos Connect 차량 앱 (AAOS)</div>
+  <div class="item"><b>Vehicle SDK</b><br>· 차속 · 조향각 · 브레이크 · 기어<br>· DrivingMode(크루즈 상태)<br>· HVAC: 폰 발열 시 냉방 보조</div>
+  <div class="item" style="margin-top:8px"><b>ADAS · Location · Gleo AI</b><br>· ADAS 작동 상태 기록<br>· 차량 위치/경로 맥락<br>· 음성 경고: "전방을 주시해 주세요"</div>
+  <div class="item" style="margin-top:8px"><b>UI</b> 수집 상태 · 안전 점수 · 리워드</div>
+ </div>
+ <div class="arrow"><div class="a">⇢</div>새벽 · Wi-Fi ·<br>충전 중 업로드</div>
+ <div class="box orange" style="flex:1">
+  <div class="h">③ 클라우드</div>
+  <div class="item">· 영상 + 차량신호 + IMU<br>&nbsp;&nbsp;정렬된 학습 데이터셋<br>· AI 품질 점수 산정<br>· 리워드 지급(포인트·구독 할인)<br>· 자율주행/ADAS 모델 학습<br>· 섀도 모드 검증 결과 집계</div>
+ </div>
+</div>
+<div class="cap">※ 1주 MVP 범위: ① 전체 + ② 차량 신호 읽기·HVAC 보조(Pleos 에뮬레이터) + ③ 로컬 업로드 서버로 대체. 차량 제어(자율주행)는 장기 비전</div>
+</body></html>
